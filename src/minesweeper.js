@@ -30,7 +30,13 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 	};
 	board[randomRowIndex][randomColumnIndex] = 'B';
 	numberOfBombsPlaced++ //Is this the right lexical place?
-
 	return board;
 }
 
+const printBoard = console.log(board => board.map(row => row.join(' | ')).join('\n'));
+let playerBoard = generatePlayerBoard(3,4);
+let bombBoard = generateBombBoard(3,4,5);
+console.log('Player board:');
+printBoard(playerBoard);
+console.log('Bomb board:');
+printBoard(bombBoard);
