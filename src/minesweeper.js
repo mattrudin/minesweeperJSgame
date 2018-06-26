@@ -21,19 +21,17 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 	}
 	let numberOfBombsPlaced = 0;
 	while (numberOfBombsPlaced < numberOfBombs) {
-		let randomRowIndex = Math.floor(Math.random() * numberOfRows);
-		//while loop overrides existing bombs
+		let randomRowIndex = Math.floor(Math.random() * numberOfRows); //while loop overrides existing bombs
+		let randomColumnIndex = Math.floor(Math.random() * numberOfColumns); //while loop overrides existing bombs
+		board[randomRowIndex][randomColumnIndex] = 'B';
+		numberOfBombsPlaced++
 	};
-	while (numberOfBombsPlaced < numberOfBombs) {
-		let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
-		//while loop overrides existing bombs
-	};
-	board[randomRowIndex][randomColumnIndex] = 'B';
-	numberOfBombsPlaced++ //Is this the right lexical place?
 	return board;
 }
 
-const printBoard = console.log(board => board.map(row => row.join(' | ')).join('\n'));
+const printBoard = board => {
+	console.log(board.map(row => row.join(' | ')).join('\n'));
+};
 let playerBoard = generatePlayerBoard(3,4);
 let bombBoard = generateBombBoard(3,4,5);
 console.log('Player board:');
